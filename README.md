@@ -1,84 +1,50 @@
-# Linear Regression from Scratch
+# Models from Scratch
 
-This repository demonstrates how to implement **Linear Regression** from scratch using **Gradient Descent** and **SSR Minimization** in Python.
+This repository contains simple, from-scratch implementations of two fundamental machine learning models:
 
-The goal is to understand the fundamentals of linear regression and how to implement it without relying on any high-level libraries like Scikit-learn. The project includes two methods for fitting the best line to data:
+- **Linear Regression**
+- **Logistic Regression**
 
-- **SSR Minimization** (Sum of Squared Residuals)
-- **Gradient Descent**
+Built without any machine learning libraries like Scikit-learn — only using **NumPy** and **Matplotlib**.
 
-## Features
-- Generate synthetic data to simulate a linear relationship.
-- Implement a brute-force approach using SSR minimization to find the best fit line.
-- Implement Gradient Descent to optimize the linear regression parameters.
-- Plot the data points, the best fit line from both methods, and the cost history for gradient descent.
+---
 
-## Requirements
+## Linear Regression
 
-To run the project, you'll need the following libraries:
+- **Goal:** Predict a continuous value.
+- **Method:** Minimize the **sum of squared residuals** between predicted and actual values.
+- **Metrics Used:**
+  - **R² (Coefficient of Determination):**  
+    Measures how much of the variance in the target variable is explained by the feature.
+  - **p-value:**  
+    Evaluates the statistical significance of the relationship between the feature and the target.
+- **Important Concepts:**
+  - Drawing different lines through the data.
+  - Measuring residuals and finding the line that minimizes total squared error.
+  - Calculating R² and p-values to judge both the **quality** and **trustworthiness** of the model.
 
-- `numpy`
-- `matplotlib`
+---
 
-You can install them using `pip`:
+## Logistic Regression
 
-```bash
-pip install numpy matplotlib
-```
+- **Goal:** Classify data into two classes (binary classification).
+- **Method:** 
+  - Apply a **sigmoid function** to model the probability that a data point belongs to class 1.
+  - Optimize weights by minimizing the **logistic loss** using **gradient descent**.
+- **Metrics Used:**
+  - **Accuracy** on training data.
+- **Important Concepts:**
+  - Adding a bias term (intercept) to the features.
+  - Learning the weights through iterative optimization.
+  - Visualizing both the **training process** (cost vs iterations) and the **final decision boundary**.
+  - Making actual probability predictions for new, unseen points.
 
-## File Structure
+---
 
-```
-linearregression-from-scratch/
-│
-├── linear_regression.py        # Main script with the implementation
-├── README.md                  # This README file
-└── data/                      # Folder to store data (if required)
-```
+## Final Thoughts
 
-## Usage
+Both models are implemented from the ground up without any shortcuts, ensuring a deep understanding of how they actually work internally — not just calling `.fit()` and `.predict()`.
 
-### 1. **SSR Minimization Method**
-This method finds the best slope and intercept by brute-force search, minimizing the Sum of Squared Residuals (SSR).
+---
+**Feel free to explore the code blocks and plots to get a better sense of how real models are built piece by piece.**
 
-```python
-best_slope, best_intercept, R_squared = best_fit_ssr(x, y)
-```
-
-### 2. **Gradient Descent Method**
-This method uses gradient descent to minimize the cost function (MSE) and optimize the parameters.
-
-```python
-m, b, cost_history = gradient_descent(x, y, alpha=0.1, iterations=1000)
-```
-
-### Example
-To generate data, fit the model, and visualize the results:
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Generate synthetic data
-x = np.random.rand(100)
-y = 2 * x + np.random.normal(0, 0.1, 100)
-
-# SSR Minimization
-best_slope, best_intercept, R_squared = best_fit_ssr(x, y)
-
-# Gradient Descent
-m, b, cost_history = gradient_descent(x, y)
-
-# Visualize the results
-plt.scatter(x, y, label='Data Points')
-plt.plot(x, best_slope * x + best_intercept, color='red', label='Best Fit Line (SSR Minimization)')
-plt.plot(x, m * x + b, color='green', label='Best Fit Line (Gradient Descent)')
-plt.xlabel('x')
-plt.ylabel('y')
-plt.legend()
-plt.show()
-```
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
