@@ -1,9 +1,10 @@
 # Models from Scratch
 
-This repository contains simple, from-scratch implementations of two fundamental machine learning models:
+This repository contains simple, from-scratch implementations of three fundamental machine learning models:
 
 - **Linear Regression**
 - **Logistic Regression**
+- **Decision Tree Classifier**
 
 Built without any machine learning libraries like Scikit-learn — only using **NumPy** and **Matplotlib**.
 
@@ -41,10 +42,25 @@ Built without any machine learning libraries like Scikit-learn — only using **
 
 ---
 
+## Decision Tree Classifier
+
+- **Goal:** Classify data into two or more classes (binary or multiclass classification).
+- **Method:** 
+  - Split the dataset recursively based on **Entropy** and **Information Gain** to build a tree structure.
+  - At each node, choose the feature and threshold that result in the purest possible child nodes.
+- **Metrics Used:**
+  - **Entropy** to measure the disorder or impurity at a node.
+  - **Information Gain** to quantify the effectiveness of a split.
+- **Important Concepts:**
+  - Growing the tree recursively by selecting the best splits.
+  - Stopping conditions like max depth, minimum samples at a node, or perfect purity.
+  - Understanding how a decision tree essentially creates a set of logical if-else conditions to classify points.
+
+---
+
 ## Final Thoughts
 
-Both models are implemented from the ground up without any shortcuts, ensuring a deep understanding of how they actually work internally — not just calling `.fit()` and `.predict()`.
+All models are implemented from the ground up without any shortcuts, ensuring a deep understanding of how they actually work internally — not just calling `.fit()` and `.predict()`.
 
 ---
 **Feel free to explore the code blocks and plots to get a better sense of how real models are built piece by piece.**
-
